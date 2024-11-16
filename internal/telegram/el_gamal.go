@@ -5,7 +5,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-const ElGamalHint = "Usage: /enigma rot=315 ref=C pp=A-U,D-Y str=MJL"
+const ElGamalHint = "/elgamal p=19 g=3 k=7 x=8 M=5"
 
 func (c *Client) handleElGamal(message *tgbotapi.Message) {
 	// Parse parameters from the message text

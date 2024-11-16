@@ -5,7 +5,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-const EnigmaHint = "Usage: /diffie n=17 q=11 x=2 y=3"
+const EnigmaHint = "/enigma rot=315 ref=C pp=A-U,D-Y str=MJL"
 
 func (c *Client) handleEnigma(message *tgbotapi.Message) {
 	// Parse parameters from the message text

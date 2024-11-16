@@ -5,7 +5,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-const RSAHint = "Usage: /rsa p=3 q=7 e=5 x=101"
+const RSAHint = "/rsa p=3 q=7 e=5 x=101"
 
 func (c *Client) handleRSA(message *tgbotapi.Message) {
 	// Parse parameters from the message text

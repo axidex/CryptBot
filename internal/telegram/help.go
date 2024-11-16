@@ -12,7 +12,7 @@ func (c *Client) handleStart(message *tgbotapi.Message) {
 }
 
 func (c *Client) handleHelp(message *tgbotapi.Message) {
-	var hints []string
+	hints := []string{"Usage:"}
 	for command, _ := range c.commands {
 		if command == CommandHelp || command == CommandStart {
 			continue

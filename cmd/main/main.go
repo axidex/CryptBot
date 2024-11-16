@@ -1,12 +1,14 @@
 package main
 
 import (
+	"bot/internal/config"
 	"bot/internal/telegram"
 	"bot/pkg/logger"
 	"flag"
 	"github.com/joho/godotenv"
 	"os"
 	"os/signal"
+	"strconv"
 	"syscall"
 )
 
@@ -24,7 +26,14 @@ func main() {
 
 	botKey := os.Getenv("BOT_KEY")
 
-	client := telegram.NewClient(botKey, debug, appLogger)
+	desHost := os.Getenv("DES_HOST")
+	desPort, _ := strconv.Atoi(os.Getenv("DES_PORT"))
+
+	cfg := config.Config{DesHost: desHost, DesPort: desPort}
+
+	appLogger.Infof("cfg: %+v", cfg)
+
+	client := telegram.NewClient(botKey, debug, appLogger, cfg)
 	go client.Run()
 
 	sigs := make(chan os.Signal, 1)

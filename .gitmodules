@@ -1,0 +1,3 @@
+[submodule "edu-des"]
+	path = edu-des
+	url = https://github.com/axidex/edu-des.git

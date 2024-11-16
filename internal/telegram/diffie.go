@@ -5,7 +5,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-const DiffieHellmanHint = "Usage: /diffie n=17 q=11 x=2 y=3"
+const DiffieHellmanHint = "/diffie n=17 q=11 x=2 y=3"
 
 func (c *Client) handleDiffie(message *tgbotapi.Message) {
 	// Parse parameters from the message text

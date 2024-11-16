@@ -2,7 +2,9 @@ package telegram
 
 import (
 	"bot/internal/app"
+	"bot/internal/config"
 	"bot/pkg/logger"
+	"github.com/go-resty/resty/v2"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"strings"
 )
@@ -13,12 +15,14 @@ import (
 //}
 
 type Client struct {
-	logger   logger.Logger
-	bot      *tgbotapi.BotAPI
-	commands map[Command]func(*tgbotapi.Message)
+	logger     logger.Logger
+	bot        *tgbotapi.BotAPI
+	commands   map[Command]func(*tgbotapi.Message)
+	httpClient *resty.Client
+	config     config.Config
 }
 
-func NewClient(apiKey string, debug bool, logger logger.Logger) app.App {
+func NewClient(apiKey string, debug bool, logger logger.Logger, config config.Config) app.App {
 	bot, err := tgbotapi.NewBotAPI(apiKey)
 	if err != nil {
 		logger.Fatal(err)
@@ -29,9 +33,11 @@ func NewClient(apiKey string, debug bool, logger logger.Logger) app.App {
 	logger.Infof("Authorized on account %s", bot.Self.UserName)
 
 	client := &Client{
-		logger:   logger,
-		bot:      bot,
-		commands: make(map[Command]func(*tgbotapi.Message)),
+		logger:     logger,
+		bot:        bot,
+		commands:   make(map[Command]func(*tgbotapi.Message)),
+		httpClient: resty.New(),
+		config:     config,
 	}
 	// Register commands
 	client.registerCommands()
@@ -46,6 +52,7 @@ func (c *Client) registerCommands() {
 	c.commands[CommandDiffie] = c.handleDiffie
 	c.commands[CommandRSA] = c.handleRSA
 	c.commands[CommandEnigma] = c.handleEnigma
+	c.commands[CommandDes] = c.handleDes
 }
 
 func (c *Client) Run() {
