@@ -21,6 +21,11 @@ func (c *Client) handleDiffie(message *tgbotapi.Message) {
 	x := params["x"]
 	y := params["y"]
 
+	if n <= 0 || q <= 0 || x < 0 || y < 0 {
+		c.sendMessage(message.Chat.ID, DiffieHellmanHint, message.MessageID)
+		return
+	}
+
 	result := problems.DiffieHellman(n, q, x, y)
 
 	c.sendMessage(message.Chat.ID, result, message.MessageID)

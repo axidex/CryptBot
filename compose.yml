@@ -1,6 +1,7 @@
 services:
   bot:
     build: "."
+    restart: always
     depends_on:
       - des
     volumes:
@@ -8,5 +9,6 @@ services:
 
   des:
     build: "./edu-des"
+    restart: always
     env_file:
       - .env

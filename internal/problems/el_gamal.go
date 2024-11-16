@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func ElGamal(p, g, k, x, M int) string {
+func ElGamal(p, g, k, x, M int) (string, error) {
 	var text []string
 	bigP := big.NewInt(int64(p))
 	bigG := big.NewInt(int64(g))
@@ -32,10 +32,14 @@ func ElGamal(p, g, k, x, M int) string {
 	text = append(text, fmt.Sprintf("a = g^k mod p = %d^%d mod %d = %d", g, k, p, a))
 
 	// newM = b/(a^x mod p)
-	newM := new(big.Int).Div(b, new(big.Int).Exp(a, bigX, bigP))
+	aXmodP := new(big.Int).Exp(a, bigX, bigP)
+	if aXmodP.Int64() == 0 {
+		return "", fmt.Errorf("division by zero")
+	}
+	newM := new(big.Int).Div(b, aXmodP)
 	text = append(text, fmt.Sprintf("newM = b/(a^x mod p) = %d/(%d^%d mod %d) = %d", b, a, x, p, newM))
 
 	text = append(text, fmt.Sprintf("newM = M | %d = %d", newM, M))
 
-	return strings.Join(text, "\n")
+	return strings.Join(text, "\n"), nil
 }

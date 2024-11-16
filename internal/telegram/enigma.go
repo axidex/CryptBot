@@ -30,6 +30,11 @@ func (c *Client) handleEnigma(message *tgbotapi.Message) {
 	pp := strParams["pp"]
 	str := strParams["str"]
 
+	if len(str) > 20 {
+		c.sendMessage(message.Chat.ID, EnigmaHint, message.MessageID)
+		return
+	}
+
 	result, err := problems.Enigma(rot, ref, str, pp)
 	if err != nil {
 		c.logger.Errorf("%d\t%s\t%s\t%s\t ", rot, ref, pp, str)

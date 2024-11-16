@@ -23,7 +23,16 @@ func (c *Client) handleElGamal(message *tgbotapi.Message) {
 	x := params["x"]
 	M := params["M"]
 
-	result := problems.ElGamal(p, g, k, x, M)
+	if p <= 0 || g <= 0 || k <= 0 || x <= 0 || M <= 0 {
+		c.sendMessage(message.Chat.ID, ElGamalHint, message.MessageID)
+		return
+	}
+
+	result, err := problems.ElGamal(p, g, k, x, M)
+	if err != nil {
+		c.sendMessage(message.Chat.ID, ElGamalHint, message.MessageID)
+		return
+	}
 
 	c.sendMessage(message.Chat.ID, result, message.MessageID)
 }
