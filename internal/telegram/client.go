@@ -53,6 +53,9 @@ func (c *Client) registerCommands() {
 	c.commands[CommandRSA] = c.handleRSA
 	c.commands[CommandEnigma] = c.handleEnigma
 	c.commands[CommandDes] = c.handleDes
+	c.commands[CommandAes] = c.handleAes
+	c.commands[CommandInvMix] = c.handleInvMix
+	c.commands[CommandFeistel] = c.handleFeistel
 }
 
 func (c *Client) Run() {
@@ -75,6 +78,7 @@ func (c *Client) processMessage(message *tgbotapi.Message) {
 	if handler, exists := c.commands[command]; exists {
 		handler(message)
 	} else {
+		c.logger.Infof("Unknown command: %s", command)
 		c.defaultReplyToUser(message)
 	}
 }

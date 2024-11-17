@@ -3,12 +3,13 @@ package utils
 import (
 	"fmt"
 	"strings"
+	"unicode"
 )
 
 const alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
 
 func RuRuneToNumber(input rune) (int, error) {
-
+	input = unicode.ToLower(input)
 	index := strings.IndexRune(alphabet, input) / 2
 	if index == -1 {
 		return -1, fmt.Errorf("invalid symbol: %c", input)

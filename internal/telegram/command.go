@@ -10,6 +10,9 @@ const (
 	CommandRSA     Command = "/rsa"
 	CommandEnigma  Command = "/enigma"
 	CommandDes     Command = "/des"
+	CommandAes     Command = "/aes"
+	CommandInvMix  Command = "/invMix"
+	CommandFeistel Command = "/feistel"
 )
 
 func (c Command) GetHint() string {
@@ -28,6 +31,12 @@ func (c Command) GetHint() string {
 		return EnigmaHint
 	case CommandDes:
 		return DesHint
+	case CommandAes:
+		return AesHint
+	case CommandInvMix:
+		return InvMixHint
+	case CommandFeistel:
+		return FeistelHint
 	}
 
 	return ""
@@ -49,6 +58,12 @@ func GetCommand(command string) Command {
 		return CommandEnigma
 	case "/des":
 		return CommandDes
+	case "/aes":
+		return CommandAes
+	case "/invmix":
+		return CommandInvMix
+	case "/feistel":
+		return CommandFeistel
 	}
 	return CommandHelp
 }

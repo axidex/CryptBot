@@ -6,12 +6,13 @@ import (
 )
 
 func main() {
+	text := "047b16c2"
+	keys := "67e99b3c"
 
-	_, err := problems.Des("гана", "куб")
+	_, err := problems.Feistel(text, keys)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	return
 }
