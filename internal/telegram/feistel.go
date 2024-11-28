@@ -21,7 +21,7 @@ func (c *Client) handleFeistel(message *tgbotapi.Message) {
 	keys := strParams["keys"]
 
 	if len(data) != 8 || len(keys) != 8 {
-		c.logger.Errorf("handleAes: invalid Feistel text=%s, key=%s | %d, %d", data, keys, len(data), len(keys))
+		c.logger.Errorf("handleFeistel: invalid Feistel data=%s, keys=%s | %d, %d", data, keys, len(data), len(keys))
 		c.sendMessage(message.Chat.ID, FeistelHint, message.MessageID)
 		return
 	}

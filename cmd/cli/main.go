@@ -6,13 +6,12 @@ import (
 )
 
 func main() {
-	text := "047b16c2"
-	keys := "67e99b3c"
 
-	_, err := problems.Feistel(text, keys)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
+	steps := problems.BlowFish(4, 9, 1, 5, 3, 4, 5)
+	//if err != nil {
+	//	fmt.Println(err)
+	//	return
+	//}
+	fmt.Println(steps)
 
 }
