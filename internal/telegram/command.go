@@ -17,6 +17,8 @@ const (
 	CommandA5       Command = "/A5"
 	Command3Des     Command = "/3des"
 	CommandBlowFish Command = "/blowfish"
+	CommandSBlock   Command = "/sblock"
+	CommandMd5      Command = "/md5"
 )
 
 func (c Command) GetHint() string {
@@ -49,6 +51,10 @@ func (c Command) GetHint() string {
 		return Des3Hint
 	case CommandBlowFish:
 		return BlowFishHint
+	case CommandSBlock:
+		return SBlockHint
+	case CommandMd5:
+		return Md5Hint
 	}
 
 	return ""
@@ -84,6 +90,10 @@ func GetCommand(command string) Command {
 		return Command3Des
 	case "/blowfish":
 		return CommandBlowFish
+	case "/sblock":
+		return CommandSBlock
+	case "/md5":
+		return CommandMd5
 	}
 	return CommandHelp
 }

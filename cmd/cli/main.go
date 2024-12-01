@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	steps := problems.BlowFish(4, 9, 1, 5, 3, 4, 5)
+	steps := problems.Md5(5, 1, 9, 1, 6, 10)
 	//if err != nil {
 	//	fmt.Println(err)
 	//	return

@@ -60,6 +60,8 @@ func (c *Client) registerCommands() {
 	c.commands[CommandA5] = c.handleA5
 	c.commands[Command3Des] = c.handle3Des
 	c.commands[CommandBlowFish] = c.handleBlowFish
+	c.commands[CommandSBlock] = c.handleSBlock
+	c.commands[CommandMd5] = c.handleMd5
 }
 
 func (c *Client) Run() {
