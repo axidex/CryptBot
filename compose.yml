@@ -1,14 +1,15 @@
 services:
   bot:
-    build: "."
+    image: ghcr.io/axidex/cryptbot:master
     restart: always
+    pull_policy: always
     depends_on:
       - des
     volumes:
       - ./.env:/app/.env
 
   des:
-    build: "./edu-des"
+    image: ghcr.io/axidex/edu-des:main
     restart: always
     env_file:
       - .env

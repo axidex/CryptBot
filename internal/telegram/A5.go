@@ -5,7 +5,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-const A5Hint = "/A5 a=010011 b=1001011 c=10101011110 text=f34ff541f04fed5ee04fff59fa50"
+const A5Hint = "/a5 a=010011 b=1001011 c=10101011110 text=f34ff541f04fed5ee04fff59fa50"
 
 func (c *Client) handleA5(message *tgbotapi.Message) {
 
@@ -13,7 +13,7 @@ func (c *Client) handleA5(message *tgbotapi.Message) {
 	strParams, err := parseStrParams(message.Text, requiredStrKeys)
 	if err != nil {
 		c.logger.Errorf("parseStrParams: %v", err)
-		c.sendMessage(message.Chat.ID, FeistelHint, message.MessageID)
+		c.sendMessage(message.Chat.ID, A5Hint, message.MessageID)
 		return
 	}
 

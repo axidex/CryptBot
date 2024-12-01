@@ -5,7 +5,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-const InvMixHint = "/invMix char=h"
+const InvMixHint = "/invmix char=h"
 
 func (c *Client) handleInvMix(message *tgbotapi.Message) {
 

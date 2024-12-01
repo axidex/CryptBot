@@ -22,7 +22,7 @@ func (c *Client) handleRSA(message *tgbotapi.Message) {
 	x := params["x"]
 
 	if p < 0 || q < 0 || e < 0 || x < 0 {
-		c.sendMessage(message.Chat.ID, ElGamalHint, message.MessageID)
+		c.sendMessage(message.Chat.ID, RSAHint, message.MessageID)
 		return
 	}
 
