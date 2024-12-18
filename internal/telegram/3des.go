@@ -22,7 +22,7 @@ func (c *Client) handle3Des(message *tgbotapi.Message) {
 	k2 := params["k2"]
 	k3 := params["k3"]
 
-	if l <= 0 || r <= 0 || k1 < 0 || k2 < 0 || k3 < 0 {
+	if l < 0 || r < 0 || k1 < 0 || k2 < 0 || k3 < 0 {
 		c.sendMessage(message.Chat.ID, Des3Hint, message.MessageID)
 		return
 	}
