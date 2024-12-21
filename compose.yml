@@ -22,23 +22,33 @@ services:
       - .env
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:$DES_PORT/health" ]
-      interval: 30s      # Интервал проверки (30 секунд)
-      timeout: 5s        # Таймаут ответа (5 секунд)
-      retries: 3         # Количество повторных попыток
-      start_period: 5s  # Время ожидания перед первой проверкой (10 секунд)
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
 
   front:
     image: ghcr.io/axidex/cryptfront:master
     restart: always
     env_file:
       - .env
-    ports:
-      - "80:${FRONT_PORT}"
     depends_on:
       - bot
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:$FRONT_PORT/health" ]
-      interval: 30s      # Интервал проверки (30 секунд)
-      timeout: 5s        # Таймаут ответа (5 секунд)
-      retries: 3         # Количество повторных попыток
-      start_period: 5s  # Время ожидания перед первой проверкой (10 секунд)
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - front
+    env_file:
+      - .env
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
