@@ -1,11 +1,11 @@
 package main
 
 import (
-	"bot/internal/api"
-	"bot/internal/config"
-	"bot/internal/telegram"
-	"bot/pkg/logger"
 	"flag"
+	"github.com/axidex/CryptBot/internal/api"
+	"github.com/axidex/CryptBot/internal/config"
+	"github.com/axidex/CryptBot/internal/telegram"
+	"github.com/axidex/CryptBot/pkg/logger"
 	"github.com/joho/godotenv"
 	"os"
 	"os/signal"

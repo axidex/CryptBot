@@ -1,7 +1,7 @@
 package api
 
 import (
-	"bot/pkg/logger"
+	"github.com/axidex/CryptBot/pkg/logger"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/time/rate"
 	"net/http"

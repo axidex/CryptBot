@@ -1,7 +1,7 @@
 package api
 
 import (
-	"bot/internal/problems"
+	"github.com/axidex/CryptBot/internal/problems"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

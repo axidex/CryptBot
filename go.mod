@@ -1,4 +1,4 @@
-module bot
+module github.com/axidex/CryptBot
 
 go 1.23.0
 

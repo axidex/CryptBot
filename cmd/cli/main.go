@@ -1,8 +1,8 @@
 package main
 
 import (
-	"bot/internal/problems"
 	"fmt"
+	"github.com/axidex/CryptBot/internal/problems"
 )
 
 func main() {

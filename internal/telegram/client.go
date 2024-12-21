@@ -1,9 +1,9 @@
 package telegram
 
 import (
-	"bot/internal/app"
-	"bot/internal/config"
-	"bot/pkg/logger"
+	"github.com/axidex/CryptBot/internal/app"
+	"github.com/axidex/CryptBot/internal/config"
+	"github.com/axidex/CryptBot/pkg/logger"
 	"github.com/go-resty/resty/v2"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"strings"

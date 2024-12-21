@@ -1,10 +1,10 @@
 package api
 
 import (
-	_ "bot/docs"
-	"bot/internal/app"
-	"bot/pkg/logger"
 	"fmt"
+	_ "github.com/axidex/CryptBot/docs"
+	"github.com/axidex/CryptBot/internal/app"
+	"github.com/axidex/CryptBot/pkg/logger"
 	"github.com/gin-gonic/gin"
 )
 

@@ -1,7 +1,7 @@
 package problems
 
 import (
-	"bot/internal/utils"
+	"github.com/axidex/CryptBot/internal/utils"
 	"fmt"
 	"strings"
 )

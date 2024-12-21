@@ -1,7 +1,7 @@
 package telegram
 
 import (
-	"bot/internal/problems"
+	"github.com/axidex/CryptBot/internal/problems"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
