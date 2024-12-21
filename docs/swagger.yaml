@@ -55,7 +55,7 @@ paths:
     post:
       consumes:
       - application/json
-      description: AES
+      description: Aes
       parameters:
       - default: Перу
         description: text
@@ -86,7 +86,113 @@ paths:
           schema:
             additionalProperties: true
             type: object
-      summary: AES
+      summary: Aes
+      tags:
+      - Crypt
+  /api/v1/blowfish:
+    post:
+      consumes:
+      - application/json
+      description: Blowfish
+      parameters:
+      - default: 4
+        description: Left block
+        in: query
+        name: l
+        required: true
+        type: integer
+      - default: 9
+        description: Right block
+        in: query
+        name: r
+        required: true
+        type: integer
+      - default: 1
+        description: Key 1
+        in: query
+        name: k1
+        required: true
+        type: integer
+      - default: 5
+        description: Key 2
+        in: query
+        name: k2
+        required: true
+        type: integer
+      - default: 3
+        description: Key 3
+        in: query
+        name: k3
+        required: true
+        type: integer
+      - default: 4
+        description: Key 4
+        in: query
+        name: k4
+        required: true
+        type: integer
+      - default: 5
+        description: Key 5
+        in: query
+        name: k5
+        required: true
+        type: integer
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Blowfish
+      tags:
+      - Crypt
+  /api/v1/des:
+    post:
+      consumes:
+      - application/json
+      description: Des
+      parameters:
+      - default: гана
+        description: text
+        in: query
+        name: text
+        required: true
+        type: string
+      - default: куб
+        description: key
+        in: query
+        name: key
+        required: true
+        type: string
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Des
       tags:
       - Crypt
   /api/v1/des3:
@@ -143,6 +249,444 @@ paths:
             additionalProperties: true
             type: object
       summary: Des3
+      tags:
+      - Crypt
+  /api/v1/diffie:
+    post:
+      consumes:
+      - application/json
+      description: Diffie
+      parameters:
+      - default: 17
+        description: "n"
+        in: query
+        name: "n"
+        required: true
+        type: integer
+      - default: 11
+        description: q
+        in: query
+        name: q
+        required: true
+        type: integer
+      - default: 2
+        description: x
+        in: query
+        name: x
+        required: true
+        type: integer
+      - default: 3
+        description: "y"
+        in: query
+        name: "y"
+        required: true
+        type: integer
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Diffie
+      tags:
+      - Crypt
+  /api/v1/elgamal:
+    post:
+      consumes:
+      - application/json
+      description: Elgamal
+      parameters:
+      - default: 19
+        description: p
+        in: query
+        name: p
+        required: true
+        type: integer
+      - default: 3
+        description: g
+        in: query
+        name: g
+        required: true
+        type: integer
+      - default: 7
+        description: k
+        in: query
+        name: k
+        required: true
+        type: integer
+      - default: 8
+        description: x
+        in: query
+        name: x
+        required: true
+        type: integer
+      - default: 5
+        description: m
+        in: query
+        name: m
+        required: true
+        type: integer
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Elgamal
+      tags:
+      - Crypt
+  /api/v1/enigma:
+    post:
+      consumes:
+      - application/json
+      description: Enigma
+      parameters:
+      - default: 315
+        description: rotor
+        in: query
+        name: rot
+        required: true
+        type: integer
+      - default: C
+        description: reflector
+        in: query
+        name: ref
+        required: true
+        type: string
+      - default: A-U,D-Y
+        description: patch panel
+        in: query
+        name: pp
+        required: true
+        type: string
+      - default: MJL
+        description: text
+        in: query
+        name: str
+        required: true
+        type: string
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Enigma
+      tags:
+      - Crypt
+  /api/v1/feistel:
+    post:
+      consumes:
+      - application/json
+      description: Feistel
+      parameters:
+      - default: 047b16c2
+        description: text
+        in: query
+        name: data
+        required: true
+        type: string
+      - default: 67e99b3c
+        description: key
+        in: query
+        name: keys
+        required: true
+        type: string
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Feistel
+      tags:
+      - Crypt
+  /api/v1/hash:
+    post:
+      consumes:
+      - application/json
+      description: Hash
+      parameters:
+      - default: сотовыйтелефон
+        description: word
+        in: query
+        name: word
+        required: true
+        type: string
+      - default: "7"
+        description: h0
+        in: query
+        name: h0
+        required: true
+        type: string
+      - default: 11
+        description: p
+        in: query
+        name: p
+        required: true
+        type: integer
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Hash
+      tags:
+      - Crypt
+  /api/v1/invMix:
+    post:
+      consumes:
+      - application/json
+      description: InvMix
+      parameters:
+      - default: h
+        description: char
+        in: query
+        name: char
+        required: true
+        type: string
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: InvMix
+      tags:
+      - Crypt
+  /api/v1/md5:
+    post:
+      consumes:
+      - application/json
+      description: Md5
+      parameters:
+      - default: 5
+        description: a
+        in: query
+        name: a
+        required: true
+        type: integer
+      - default: 1
+        description: b
+        in: query
+        name: b
+        required: true
+        type: integer
+      - default: 9
+        description: c
+        in: query
+        name: c
+        required: true
+        type: integer
+      - default: 1
+        description: d
+        in: query
+        name: d
+        required: true
+        type: integer
+      - default: 6
+        description: m
+        in: query
+        name: m
+        required: true
+        type: integer
+      - default: 10
+        description: k
+        in: query
+        name: k
+        required: true
+        type: integer
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Md5
+      tags:
+      - Crypt
+  /api/v1/rsa:
+    post:
+      consumes:
+      - application/json
+      description: Rsa
+      parameters:
+      - default: 3
+        description: p
+        in: query
+        name: p
+        required: true
+        type: integer
+      - default: 7
+        description: q
+        in: query
+        name: q
+        required: true
+        type: integer
+      - default: 5
+        description: e
+        in: query
+        name: e
+        required: true
+        type: integer
+      - default: 101
+        description: x
+        in: query
+        name: x
+        required: true
+        type: integer
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Rsa
+      tags:
+      - Crypt
+  /api/v1/sBlock:
+    post:
+      consumes:
+      - application/json
+      description: SBlock
+      parameters:
+      - default: 11
+        description: a
+        in: query
+        name: a
+        required: true
+        type: integer
+      - default: 17
+        description: b
+        in: query
+        name: b
+        required: true
+        type: integer
+      - default: 15
+        description: c
+        in: query
+        name: c
+        required: true
+        type: integer
+      - default: 12
+        description: z0
+        in: query
+        name: z0
+        required: true
+        type: integer
+      - default: 7
+        description: "n"
+        in: query
+        name: "n"
+        required: true
+        type: integer
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: SBlock
       tags:
       - Crypt
 swagger: "2.0"
