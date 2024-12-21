@@ -1,8 +1,8 @@
 package problems
 
 import (
-	"github.com/axidex/CryptBot/internal/utils"
 	"fmt"
+	"github.com/axidex/CryptBot/internal/utils"
 	"math/big"
 	"strings"
 )
@@ -24,7 +24,7 @@ func Hash(word string, h0, p int) (string, error) {
 
 		h.Exp(h, big.NewInt(2), div)
 
-		steps = append(steps, fmt.Sprintf("h%d = (h%d + %d)^2 mod %d =  = %d", num+1, num, letterNumber, p, h.Int64()))
+		steps = append(steps, fmt.Sprintf("h%d = (h%d + %d)^2 mod %d = %d", num+1, num, letterNumber, p, h.Int64()))
 	}
 
 	return strings.Join(steps, "\n"), nil

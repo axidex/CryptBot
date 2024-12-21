@@ -47,7 +47,7 @@ func Md5Round1(a, b, c, d, m, k, f, i int) (int, string) {
 	xor2 := m ^ xor1
 	steps = append(steps, fmt.Sprintf("XOR2 = m xor XOR1 = %04b", xor2))
 	xor3 := k ^ xor2
-	steps = append(steps, fmt.Sprintf("XOR2 = k xor XOR2 = %04b", xor3))
+	steps = append(steps, fmt.Sprintf("XOR3 = k xor XOR2 = %04b", xor3))
 
 	shift := rotateLeft4Bits(xor3, i)
 	steps = append(steps, fmt.Sprintf("shiftLeft for %d times = %04b", i, shift))
