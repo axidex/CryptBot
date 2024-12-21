@@ -6,6 +6,14 @@ swag:
 run-server:
 	go run cmd/main/main.go
 
-re-pull:
+restart-full: remove pull compose
+
+remove:
 	docker compose stop
 	docker compose rm -f
+
+pull:
+	docker compose pull
+
+compose:
+	docker compose up -d
