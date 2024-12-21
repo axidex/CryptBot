@@ -85,7 +85,7 @@ func (l *ZapLogger) InitLogger() {
 	encoderCfg.NameKey = "name"
 	encoderCfg.MessageKey = "message"
 	encoderCfg.EncodeTime = CustomTimeEncoder
-	encoderCfg.EncodeLevel = CustomLevelEncoder
+	encoderCfg.EncodeLevel = zapcore.CapitalColorLevelEncoder
 
 	encoder = zapcore.NewConsoleEncoder(encoderCfg)
 	//fileEncoder := zapcore.NewJSONEncoder(encoderCfg)

@@ -19,10 +19,10 @@ type Client struct {
 	bot        *tgbotapi.BotAPI
 	commands   map[Command]func(*tgbotapi.Message)
 	httpClient *resty.Client
-	config     config.Config
+	config     config.DesConfig
 }
 
-func NewClient(apiKey string, debug bool, logger logger.Logger, config config.Config) app.App {
+func NewClient(apiKey string, debug bool, logger logger.Logger, config config.DesConfig) app.App {
 	bot, err := tgbotapi.NewBotAPI(apiKey)
 	if err != nil {
 		logger.Fatal(err)

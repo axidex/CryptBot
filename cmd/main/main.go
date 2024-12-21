@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bot/internal/api"
 	"bot/internal/config"
 	"bot/internal/telegram"
 	"bot/pkg/logger"
@@ -29,12 +30,20 @@ func main() {
 	desHost := os.Getenv("DES_HOST")
 	desPort, _ := strconv.Atoi(os.Getenv("DES_PORT"))
 
-	cfg := config.Config{DesHost: desHost, DesPort: desPort}
+	apiPort, _ := strconv.Atoi(os.Getenv("API_PORT"))
 
-	appLogger.Infof("cfg: %+v", cfg)
+	apiConfig := api.Config{Port: apiPort}
 
-	client := telegram.NewClient(botKey, debug, appLogger, cfg)
-	go client.Run()
+	desCfg := config.DesConfig{DesHost: desHost, DesPort: desPort}
+
+	appLogger.Infof("desCfg: %+v", desCfg)
+
+	client := telegram.NewClient(botKey, debug, appLogger, desCfg)
+
+	apiApp := api.CreateApp(apiConfig, appLogger)
+
+	//go client.Run()
+	go apiApp.Run()
 
 	sigs := make(chan os.Signal, 1)
 	done := make(chan bool, 1)

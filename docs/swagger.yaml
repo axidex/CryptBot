@@ -1,0 +1,60 @@
+info:
+  contact: {}
+paths:
+  /api/v1/des3:
+    post:
+      consumes:
+      - application/json
+      description: Des3
+      parameters:
+      - default: "5"
+        description: Left block
+        in: query
+        name: l
+        required: true
+        type: string
+      - default: "1"
+        description: Right block
+        in: query
+        name: r
+        required: true
+        type: string
+      - default: "3"
+        description: Key 1
+        in: query
+        name: k1
+        required: true
+        type: string
+      - default: "7"
+        description: Key 2
+        in: query
+        name: k2
+        required: true
+        type: string
+      - default: "5"
+        description: Key 3
+        in: query
+        name: k3
+        required: true
+        type: string
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Des3
+      tags:
+      - Crypt
+swagger: "2.0"

@@ -1,6 +1,6 @@
 package config
 
-type Config struct {
+type DesConfig struct {
 	DesPort int    `yaml:"desPort"`
 	DesHost string `yaml:"desHost"`
 }
