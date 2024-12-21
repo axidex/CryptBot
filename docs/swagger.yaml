@@ -1,42 +1,130 @@
 info:
   contact: {}
 paths:
+  /api/v1/a5:
+    post:
+      consumes:
+      - application/json
+      description: A5
+      parameters:
+      - default: "010011"
+        description: a
+        in: query
+        name: a
+        required: true
+        type: string
+      - default: "1001011"
+        description: b
+        in: query
+        name: b
+        required: true
+        type: string
+      - default: "10101011110"
+        description: c
+        in: query
+        name: c
+        required: true
+        type: string
+      - default: f34ff541f04fed5ee04fff59fa50
+        description: Text
+        in: query
+        name: text
+        required: true
+        type: string
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: A5
+      tags:
+      - Crypt
+  /api/v1/aes:
+    post:
+      consumes:
+      - application/json
+      description: AES
+      parameters:
+      - default: Перу
+        description: text
+        in: query
+        name: text
+        required: true
+        type: string
+      - default: Ключ
+        description: key
+        in: query
+        name: key
+        required: true
+        type: string
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: AES
+      tags:
+      - Crypt
   /api/v1/des3:
     post:
       consumes:
       - application/json
       description: Des3
       parameters:
-      - default: "5"
+      - default: 5
         description: Left block
         in: query
         name: l
         required: true
-        type: string
-      - default: "1"
+        type: integer
+      - default: 1
         description: Right block
         in: query
         name: r
         required: true
-        type: string
-      - default: "3"
+        type: integer
+      - default: 3
         description: Key 1
         in: query
         name: k1
         required: true
-        type: string
-      - default: "7"
+        type: integer
+      - default: 7
         description: Key 2
         in: query
         name: k2
         required: true
-        type: string
-      - default: "5"
+        type: integer
+      - default: 5
         description: Key 3
         in: query
         name: k3
         required: true
-        type: string
+        type: integer
       produces:
       - plain/text
       responses:

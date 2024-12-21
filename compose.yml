@@ -1,15 +1,31 @@
 services:
   bot:
+    build: .
     image: ghcr.io/axidex/cryptbot:master
     restart: always
     pull_policy: always
+    ports:
+      - "80:${API_PORT}"
     depends_on:
       - des
     volumes:
       - ./.env:/app/.env
+
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:$API_PORT/api/health/ping" ]
+      interval: 30s      # Интервал проверки (30 секунд)
+      timeout: 5s        # Таймаут ответа (5 секунд)
+      retries: 3         # Количество повторных попыток
+      start_period: 5s  # Время ожидания перед первой проверкой (10 секунд)
 
   des:
     image: ghcr.io/axidex/edu-des:main
     restart: always
     env_file:
       - .env
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:$DES_PORT/health" ]
+      interval: 30s      # Интервал проверки (30 секунд)
+      timeout: 5s        # Таймаут ответа (5 секунд)
+      retries: 3         # Количество повторных попыток
+      start_period: 5s  # Время ожидания перед первой проверкой (10 секунд)

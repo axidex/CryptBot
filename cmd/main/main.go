@@ -1,14 +1,17 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"github.com/axidex/CryptBot/internal/api"
+	"github.com/axidex/CryptBot/internal/app"
 	"github.com/axidex/CryptBot/internal/config"
 	"github.com/axidex/CryptBot/internal/telegram"
 	"github.com/axidex/CryptBot/pkg/logger"
+	"github.com/go-resty/resty/v2"
 	"github.com/joho/godotenv"
+	"github.com/oklog/run"
 	"os"
-	"os/signal"
 	"strconv"
 	"syscall"
 )
@@ -40,23 +43,17 @@ func main() {
 
 	client := telegram.NewClient(botKey, debug, appLogger, desCfg)
 
-	apiApp := api.CreateApp(apiConfig, appLogger)
+	desClient := resty.New().SetBaseURL("http://" + desCfg.DesHost + ":" + strconv.Itoa(desCfg.DesPort))
+	apiApp := api.CreateApp(apiConfig, appLogger, desClient)
 
-	//go client.Run()
-	go apiApp.Run()
+	ctx := context.Background()
 
-	sigs := make(chan os.Signal, 1)
-	done := make(chan bool, 1)
-	//registers the channel
-	signal.Notify(sigs, syscall.SIGTERM, syscall.SIGINT)
-
-	go func() {
-		sig := <-sigs
-		appLogger.Warnf("Caught %s, shutting down", sig.String())
-		client.Stop()
-		// Finish any outstanding requests, then...
-		done <- true
-	}()
-
-	<-done
+	runG := run.Group{}
+	runG.Add(app.HandleApp(ctx, apiApp))
+	runG.Add(app.HandleApp(ctx, client))
+	runG.Add(run.SignalHandler(context.TODO(), syscall.SIGINT, syscall.SIGTERM))
+	err = runG.Run()
+	if err != nil {
+		appLogger.Fatal(err)
+	}
 }

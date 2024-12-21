@@ -14,6 +14,8 @@ FROM alpine:latest
 
 WORKDIR /app
 
+RUN apk add --no-cache curl
+
 COPY --from=builder /app/app .
 
 CMD ["./app"]

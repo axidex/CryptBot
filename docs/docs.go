@@ -15,6 +15,132 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/api/v1/a5": {
+            "post": {
+                "description": "A5",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "plain/text"
+                ],
+                "tags": [
+                    "Crypt"
+                ],
+                "summary": "A5",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "010011",
+                        "description": "a",
+                        "name": "a",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "1001011",
+                        "description": "b",
+                        "name": "b",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "10101011110",
+                        "description": "c",
+                        "name": "c",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "f34ff541f04fed5ee04fff59fa50",
+                        "description": "Text",
+                        "name": "text",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Processed successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/aes": {
+            "post": {
+                "description": "AES",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "plain/text"
+                ],
+                "tags": [
+                    "Crypt"
+                ],
+                "summary": "AES",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "Перу",
+                        "description": "text",
+                        "name": "text",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "default": "Ключ",
+                        "description": "key",
+                        "name": "key",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Processed successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/des3": {
             "post": {
                 "description": "Des3",
@@ -30,40 +156,40 @@ const docTemplate = `{
                 "summary": "Des3",
                 "parameters": [
                     {
-                        "type": "string",
-                        "default": "5",
+                        "type": "integer",
+                        "default": 5,
                         "description": "Left block",
                         "name": "l",
                         "in": "query",
                         "required": true
                     },
                     {
-                        "type": "string",
-                        "default": "1",
+                        "type": "integer",
+                        "default": 1,
                         "description": "Right block",
                         "name": "r",
                         "in": "query",
                         "required": true
                     },
                     {
-                        "type": "string",
-                        "default": "3",
+                        "type": "integer",
+                        "default": 3,
                         "description": "Key 1",
                         "name": "k1",
                         "in": "query",
                         "required": true
                     },
                     {
-                        "type": "string",
-                        "default": "7",
+                        "type": "integer",
+                        "default": 7,
                         "description": "Key 2",
                         "name": "k2",
                         "in": "query",
                         "required": true
                     },
                     {
-                        "type": "string",
-                        "default": "5",
+                        "type": "integer",
+                        "default": 5,
                         "description": "Key 3",
                         "name": "k3",
                         "in": "query",

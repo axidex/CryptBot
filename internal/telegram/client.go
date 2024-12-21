@@ -64,7 +64,7 @@ func (c *Client) registerCommands() {
 	c.commands[CommandMd5] = c.handleMd5
 }
 
-func (c *Client) Run() {
+func (c *Client) Run() error {
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 60
 
@@ -76,6 +76,8 @@ func (c *Client) Run() {
 			c.processMessage(update.Message)
 		}
 	}
+
+	return nil
 }
 
 func (c *Client) processMessage(message *tgbotapi.Message) {
@@ -94,7 +96,8 @@ func (c *Client) defaultReplyToUser(message *tgbotapi.Message) {
 	c.sendMessage(message.Chat.ID, reply, message.MessageID)
 }
 
-func (c *Client) Stop() {
-	c.logger.Infof("Stopping receiving updates from bot")
+func (c *Client) Stop(err error) {
+	c.logger.Infof("Stopping receiving updates from bot: %s", err.Error())
 	c.bot.StopReceivingUpdates()
+	c.logger.Infof("Stopped receiving updates from bot")
 }
