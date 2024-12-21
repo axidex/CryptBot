@@ -1,4 +1,4 @@
-package api
+package models
 
 type Des3 struct {
 	L  *int `form:"l" binding:"required,gte=0"`

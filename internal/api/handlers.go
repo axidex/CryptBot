@@ -2,6 +2,7 @@ package api
 
 import (
 	"github.com/axidex/CryptBot/internal/problems"
+	"github.com/axidex/CryptBot/pkg/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
@@ -24,7 +25,7 @@ import (
 // @Router /api/v1/des3 [post]
 func (app *App) Des3(c *gin.Context) {
 
-	params := &Des3{}
+	params := &models.Des3{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -55,7 +56,7 @@ func (app *App) Des3(c *gin.Context) {
 // @Router /api/v1/a5 [post]
 func (app *App) A5(c *gin.Context) {
 
-	params := &A5{}
+	params := &models.A5{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -88,7 +89,7 @@ func (app *App) A5(c *gin.Context) {
 // @Router /api/v1/aes [post]
 func (app *App) Aes(c *gin.Context) {
 
-	params := &Aes{}
+	params := &models.Aes{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -122,7 +123,7 @@ func (app *App) Aes(c *gin.Context) {
 // @Router /api/v1/blowfish [post]
 func (app *App) Blowfish(c *gin.Context) {
 
-	params := &Blowfish{}
+	params := &models.Blowfish{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -151,7 +152,7 @@ func (app *App) Blowfish(c *gin.Context) {
 // @Router /api/v1/des [post]
 func (app *App) Des(c *gin.Context) {
 
-	params := &Des{}
+	params := &models.Des{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -215,7 +216,7 @@ func (app *App) Des(c *gin.Context) {
 // @Router /api/v1/diffie [post]
 func (app *App) Diffie(c *gin.Context) {
 
-	params := &Diffie{}
+	params := &models.Diffie{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -247,7 +248,7 @@ func (app *App) Diffie(c *gin.Context) {
 // @Router /api/v1/elgamal [post]
 func (app *App) Elgamal(c *gin.Context) {
 
-	params := &Elgamal{}
+	params := &models.Elgamal{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -282,7 +283,7 @@ func (app *App) Elgamal(c *gin.Context) {
 // @Router /api/v1/enigma [post]
 func (app *App) Enigma(c *gin.Context) {
 
-	params := &Enigma{}
+	params := &models.Enigma{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -315,7 +316,7 @@ func (app *App) Enigma(c *gin.Context) {
 // @Router /api/v1/feistel [post]
 func (app *App) Feistel(c *gin.Context) {
 
-	params := &Feistel{}
+	params := &models.Feistel{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -349,7 +350,7 @@ func (app *App) Feistel(c *gin.Context) {
 // @Router /api/v1/hash [post]
 func (app *App) Hash(c *gin.Context) {
 
-	params := &Hash{}
+	params := &models.Hash{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -381,7 +382,7 @@ func (app *App) Hash(c *gin.Context) {
 // @Router /api/v1/invMix [post]
 func (app *App) InvMix(c *gin.Context) {
 
-	params := &InvMix{}
+	params := &models.InvMix{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -419,7 +420,7 @@ func (app *App) InvMix(c *gin.Context) {
 // @Router /api/v1/md5 [post]
 func (app *App) Md5(c *gin.Context) {
 
-	params := &Md5{}
+	params := &models.Md5{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -450,7 +451,7 @@ func (app *App) Md5(c *gin.Context) {
 // @Router /api/v1/rsa [post]
 func (app *App) Rsa(c *gin.Context) {
 
-	params := &Rsa{}
+	params := &models.Rsa{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)
@@ -482,7 +483,7 @@ func (app *App) Rsa(c *gin.Context) {
 // @Router /api/v1/sBlock [post]
 func (app *App) SBlock(c *gin.Context) {
 
-	params := &SBlock{}
+	params := &models.SBlock{}
 	err := c.ShouldBindQuery(params)
 	if err != nil {
 		app.logger.Errorf("Error parsing params: %v", err)

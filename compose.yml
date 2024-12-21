@@ -5,7 +5,7 @@ services:
     restart: always
     pull_policy: always
     ports:
-      - "80:${API_PORT}"
+      - "5000:${API_PORT}"
     depends_on:
       - des
     volumes:
