@@ -10,7 +10,7 @@ import (
 func (app *App) swagger(c *gin.Context) {
 	switch c.Param("any") {
 	case "/", "/docs":
-		c.Redirect(http.StatusMovedPermanently, "/swagger/index.html")
+		c.Redirect(http.StatusMovedPermanently, "/api/swagger/index.html")
 	default:
 		ginSwagger.WrapHandler(swaggerFiles.Handler)(c)
 	}

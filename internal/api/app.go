@@ -33,10 +33,10 @@ func (app *App) InitRoutes() {
 	router.Use(LoggerMiddleware(app.logger))
 
 	//router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	router.GET("/swagger/*any", app.swagger)
 
 	api := router.Group("/api")
 	{
+		api.GET("/swagger/*any", app.swagger)
 		health := api.Group("/health")
 		{
 			health.GET("/ping", app.health)

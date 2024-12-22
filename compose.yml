@@ -48,7 +48,5 @@ services:
       - "80:80"
     depends_on:
       - front
-    env_file:
-      - .env
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
