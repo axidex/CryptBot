@@ -1,2 +1,4 @@
 # Secrets
+.idea
 .env
+certs

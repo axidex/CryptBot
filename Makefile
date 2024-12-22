@@ -10,7 +10,7 @@ restart-full: remove pull compose
 
 remove:
 	docker compose stop
-	docker compose rm -f
+	docker compose rm -f -v
 
 pull:
 	docker compose pull
