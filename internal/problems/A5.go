@@ -28,6 +28,14 @@ var (
 	}
 )
 
+func SliceToString[T any](slice []T) string {
+	strSlice := make([]string, len(slice))
+	for i, v := range slice {
+		strSlice[i] = fmt.Sprint(v)
+	}
+	return strings.Join(strSlice, " ")
+}
+
 func StringToIntArray(str string) ([]int, error) {
 	bitArray := make([]int, len(str))
 	for i, char := range str {
@@ -91,31 +99,36 @@ func A5(a, b, c, text string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	steps = append(steps, fmt.Sprintf("a   = %+v", exposedA))
+	steps = append(steps, fmt.Sprintf("a   = %s", SliceToString(exposedA)))
 
 	exposedB, err := exposeRegister(bitsB, 0, 3)
 	if err != nil {
 		return "", err
 	}
-	steps = append(steps, fmt.Sprintf("b   = %+v", exposedB))
+	steps = append(steps, fmt.Sprintf("b   = %s", SliceToString(exposedB)))
 	exposedC, err := exposeRegister(bitsC, 0, 2)
 	if err != nil {
 		return "", err
 	}
-	steps = append(steps, fmt.Sprintf("c   = %+v", exposedC))
+	steps = append(steps, fmt.Sprintf("c   = %s", SliceToString(exposedC)))
 
 	key := Xor(exposedA, exposedB, exposedC)
-	steps = append(steps, fmt.Sprintf("key = %+v", key))
+	steps = append(steps, fmt.Sprintf("key = %+v", SliceToString(key)))
 	keyL := key[:8]
-	steps = append(steps, fmt.Sprintf("keyL = %+v", keyL))
+	steps = append(steps, fmt.Sprintf("keyL = %+v", SliceToString(keyL)))
 	keyR := key[8:]
-	steps = append(steps, fmt.Sprintf("keyR = %+v\n", keyR))
+	steps = append(steps, fmt.Sprintf("keyR = %+v\n", SliceToString(keyR)))
 
 	bitsText, err := ConvertHexStrToIntArray(text)
 	if err != nil {
 		return "", err
 	}
-	steps = append(steps, fmt.Sprintf("text = %+v", bitsText))
+
+	steps = append(steps, "text:")
+	for _, word := range bitsText {
+		steps = append(steps, SliceToString(word))
+	}
+	steps = append(steps, "\nText XOR Key:")
 
 	for idx, bits := range bitsText {
 		bitsL := bits[:8]
@@ -136,7 +149,10 @@ func decryptToLetter(bits []int, key []int, idx int) []string {
 		curResString = append(curResString, fmt.Sprintf("%d", r))
 	}
 
-	steps = append(steps, fmt.Sprintf("%+v XOR %+v = %+v = %s", bits, key, curRes, bitsToLetter[strings.Join(curResString, "")]))
+	steps = append(steps, fmt.Sprintf("%s XOR %s = %s = %s",
+		SliceToString(bits), SliceToString(key), SliceToString(curRes),
+		bitsToLetter[strings.Join(curResString, "")]),
+	)
 	return steps
 }
 
