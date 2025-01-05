@@ -301,6 +301,62 @@ paths:
       summary: Diffie
       tags:
       - Crypt
+  /api/v1/diffie3:
+    post:
+      consumes:
+      - application/json
+      description: Diffie3
+      parameters:
+      - default: 1
+        description: a
+        in: query
+        name: a
+        required: true
+        type: integer
+      - default: 2
+        description: b
+        in: query
+        name: b
+        required: true
+        type: integer
+      - default: 3
+        description: c
+        in: query
+        name: c
+        required: true
+        type: integer
+      - default: 197
+        description: g
+        in: query
+        name: g
+        required: true
+        type: integer
+      - default: 53
+        description: p
+        in: query
+        name: p
+        required: true
+        type: integer
+      produces:
+      - plain/text
+      responses:
+        "200":
+          description: Processed successfully
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Diffie3
+      tags:
+      - Crypt
   /api/v1/elgamal:
     post:
       consumes:

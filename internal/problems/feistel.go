@@ -1,8 +1,8 @@
 package problems
 
 import (
-	"github.com/axidex/CryptBot/internal/utils"
 	"fmt"
+	"github.com/axidex/CryptBot/internal/utils"
 	"strconv"
 	"strings"
 )

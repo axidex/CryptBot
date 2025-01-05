@@ -59,6 +59,7 @@ func (app *App) InitRoutes() {
 			v1.POST("/md5", app.Md5)
 			v1.POST("/rsa", app.Rsa)
 			v1.POST("/sBlock", app.SBlock)
+			v1.POST("/diffie3", app.Diffie3)
 		}
 
 	}

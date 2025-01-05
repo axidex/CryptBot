@@ -42,6 +42,14 @@ type Diffie struct {
 	Y *int `form:"y" binding:"required,gte=0"`
 }
 
+type Diffie3 struct {
+	A *int `form:"a" binding:"required,gte=0"`
+	B *int `form:"b" binding:"required,gte=0"`
+	C *int `form:"c" binding:"required,gte=0"`
+	G *int `form:"g" binding:"required,gte=0"`
+	P *int `form:"p" binding:"required,gte=0"`
+}
+
 type Elgamal struct {
 	P *int `form:"p" binding:"required,gte=0"`
 	G *int `form:"g" binding:"required,gte=0"`

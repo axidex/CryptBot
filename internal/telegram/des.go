@@ -1,8 +1,8 @@
 package telegram
 
 import (
-	"github.com/axidex/CryptBot/internal/problems"
 	"fmt"
+	"github.com/axidex/CryptBot/internal/problems"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"strings"
 )

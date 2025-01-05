@@ -497,3 +497,35 @@ func (app *App) SBlock(c *gin.Context) {
 
 	return
 }
+
+// Diffie3
+// @Summary Diffie3
+// @Description Diffie3
+// @Tags Crypt
+// @Accept json
+// @Produce plain/text
+// @Param a query int true "a" default(1)
+// @Param b query int true "b" default(2)
+// @Param c query int true "c" default(3)
+// @Param g query int true "g" default(197)
+// @Param p query int true "p" default(53)
+// @Success 200 {string} string "Processed successfully"
+// @Failure 400 {object} map[string]interface{} "Bad request"
+// @Failure 500 {object} map[string]interface{} "Internal server error"
+// @Router /api/v1/diffie3 [post]
+func (app *App) Diffie3(c *gin.Context) {
+
+	params := &models.Diffie3{}
+	err := c.ShouldBindQuery(params)
+	if err != nil {
+		app.logger.Errorf("Error parsing params: %v", err)
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	solution := problems.DiffieHellman3(*params.A, *params.B, *params.C, *params.G, *params.P)
+
+	c.String(http.StatusOK, solution)
+
+	return
+}

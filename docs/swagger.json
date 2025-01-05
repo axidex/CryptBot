@@ -430,6 +430,85 @@
                 }
             }
         },
+        "/api/v1/diffie3": {
+            "post": {
+                "description": "Diffie3",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "plain/text"
+                ],
+                "tags": [
+                    "Crypt"
+                ],
+                "summary": "Diffie3",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "a",
+                        "name": "a",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 2,
+                        "description": "b",
+                        "name": "b",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 3,
+                        "description": "c",
+                        "name": "c",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 197,
+                        "description": "g",
+                        "name": "g",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 53,
+                        "description": "p",
+                        "name": "p",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Processed successfully",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/elgamal": {
             "post": {
                 "description": "Elgamal",
