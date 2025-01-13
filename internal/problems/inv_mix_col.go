@@ -101,7 +101,7 @@ func dividePolynomial(dividend uint16, divisor uint16) (byte, string) {
 
 // Выполняем умножение с последующим делением по модулю
 func gfMulVerbose(a, b byte) (byte, string) {
-	var steps string
+	steps := fmt.Sprintf("%02X * %02X\n", a, b)
 
 	// Шаг 1: Умножение двух многочленов
 	product, mulSteps := multiplyPolynomials(a, b)

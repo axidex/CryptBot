@@ -17,3 +17,7 @@ pull:
 
 compose:
 	docker compose up -d
+
+tidy:
+	go mod tidy
+	go fmt ./...
